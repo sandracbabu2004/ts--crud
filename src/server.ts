@@ -1,9 +1,10 @@
-
 import express from 'express';
 // import type {  Request, Response} from"express";
-import patientRoutes from './routes/patientsRoutes.js';
-// import { setupSwagger } from './swagger.js';
+import patientsRoutes from './routes/patientsRoutes.js';
+import { setupSwagger } from './swagger.js';
 const app=express();
+app.use(express.json());
+
 const PORT =4000;
 app.use((req,res,next)=>{
     console.log(`Incoming ${req.method} request to ${req.url}`);
@@ -17,11 +18,11 @@ app.use((req,res,next)=>{
 // app.get("/users",(req,res)=>{
 //     res.json(users);
 // });
-app.use(express.json());
 
-app.use('/api/patients',patientRoutes);
+
+app.use('/api/patients',patientsRoutes);
  
-// setupSwagger(app);
+setupSwagger(app);
 
 app.get("/",(req,res)=>{
     res.send("Hello TS + Express");
@@ -68,8 +69,8 @@ app.get("/",(req,res)=>{
 //     const deletedUser=users.splice(index,1);
 //     res.json(deletedUser[0]);
 // });
-app.listen(PORT,()=>{
-    console.log(`server running on http://localhost:${PORT}`);
-    const newLocal = `swagger docs available at http://localhost:${PORT}`;
+app.listen(4000,()=>{
+    console.log(`server running on http://localhost:4000`);
+    const newLocal = `swagger docs available at http://localhost:4000`;
     console.log(newLocal)
 });

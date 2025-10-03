@@ -1,7 +1,10 @@
-// import { resolve } from 'path';
+
 import {db} from '../db.js'; 
 
-import type {RowDataPacket, OkPacket} from "mysql2";
+
+import type {Connection,RowDataPacket, OkPacket} from "mysql2";
+
+
 
 export const updatePatient=(
     id:number,
@@ -22,12 +25,16 @@ export const updatePatient=(
 
 export const getAllPatients=() : Promise<RowDataPacket[]>=> {
     return new Promise((resolve,reject)=>{
-        db.query<RowDataPacket[]>('SELECT * FROM patients',(err,results)=>{
+       db.query<RowDataPacket[]>(
+        'SELECT * FROM patients',
+       
+           (err,results)=>{
             if(err)
                return reject(err);
            resolve(results);
-            
-        });
+ 
+        }
+    );
        
     });
 };

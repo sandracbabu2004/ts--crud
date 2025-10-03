@@ -1,4 +1,3 @@
-// import { resolve } from 'path';
 import { db } from '../db.js';
 export const updatePatient = (id, data) => {
     return new Promise((resolve, reject) => {
