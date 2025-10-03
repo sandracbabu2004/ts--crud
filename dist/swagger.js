@@ -13,10 +13,35 @@ const options = {
                 url: 'http://localhost:4000',
             },
         ],
+        components: {
+            schemas: {
+                Patient: {
+                    type: "object",
+                    required: ["name", "age", "medicines", "address"],
+                    properties: {
+                        name: {
+                            type: "string",
+                            description: "Patient's name",
+                        },
+                        age: {
+                            type: "integer",
+                            description: "Patient's age",
+                        },
+                        medicines: {
+                            type: "string",
+                            description: "Patient's medicines",
+                        },
+                        address: {
+                            type: "string",
+                            description: "Patient's address"
+                        },
+                    },
+                },
+            },
+        },
     },
-    apis: ['./src/routes/*.ts',],
+    apis: ['./dist/**/*.js'],
 };
-// const specs=swaggerJSDoc(options);
 const swaggerSpec = swaggerJSDoc(options);
 export const setupSwagger = (app) => {
     app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
