@@ -19,6 +19,7 @@ const options:swaggerJSDoc.Options={
     definition:{
         openapi:'3.0.0',
         info:{
+            
             title:'Patient CRUD API',
             version:'1.0.0',
             description:'API documentation for patient CRUD operations',
@@ -80,7 +81,7 @@ const options:swaggerJSDoc.Options={
             },
         },
     },
-    apis:['./dist/**/*.js'],
+    apis:['./src/routes/**/*.{js,ts}'],
 
 };
 
