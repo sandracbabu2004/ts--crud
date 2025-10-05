@@ -1,5 +1,15 @@
 import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
+const swaggerOptions = {
+    swaggerDefinition: {
+        openapi: "3.0.0",
+        info: {
+            title: "My API",
+            version: "1.0.0",
+        },
+        components: {},
+    }
+};
 const options = {
     definition: {
         openapi: '3.0.0',
@@ -34,6 +44,29 @@ const options = {
                         address: {
                             type: "string",
                             description: "Patient's address"
+                        },
+                    },
+                },
+                User: {
+                    type: 'object',
+                    required: ['name', 'email', 'password'],
+                    properties: {
+                        name: {
+                            type: 'string',
+                            description: "User's name",
+                        },
+                        email: {
+                            type: 'string',
+                            description: "User's email address",
+                        },
+                        password: {
+                            type: 'string',
+                            description: "User's password (will be hashed in DB)",
+                        },
+                        createdAt: {
+                            type: 'string',
+                            format: 'date-time',
+                            description: 'Date and time of user creation',
                         },
                     },
                 },
